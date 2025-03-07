@@ -4,84 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organizador de Pelada</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #1e1e2f;
-            color: white;
-            padding: 20px;
-        }
-        h1, h4 {
-            color: #f8f9fa;
-        }
-        .team-card {
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        }
-        .card-header {
-            font-weight: bold;
-            border-radius: 12px 12px 0 0;
-            color: white;
-        }
-        button {
-            transition: all 0.3s ease;
-        }
-        button:hover {
-            transform: scale(1.1);
-        }
-        textarea, input[type="text"], input[type="number"], input[type="color"] {
-            background-color: white;
-            border: none;
-            color: black;
-        }
-        textarea::placeholder, input::placeholder {
-            color: #333;
-        }
-        .btn {
-            border-radius: 8px;
-        }
-        .modal-content {
-            background-color: #2e2e3e;
-            color: white;
-        }
-        .modal-header, .modal-body {
-            color: white;
-        }
-        .list-group-item {
-            background-color: #2e2e3e;
-            color: white;
-            border-color: #444;
-        }
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
 
-        /* Estilos Responsivos */
-        @media (max-width: 768px) {
-            .team-card {
-                margin-bottom: 15px;
-            }
-            .btn, input, textarea {
-                font-size: 14px;
-            }
-            .card-header {
-                font-size: 16px;
-            }
-            h1 {
-                font-size: 24px;
-            }
-            h4 {
-                font-size: 18px;
-            }
-        }
-    </style>
+    <!-- Bootstrap CSS Local -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS Local -->
+    <link href="assets/FontAwesome/css/all.min.css" rel="stylesheet">
+
+    <!-- Estilos Personalizados -->
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -120,13 +51,13 @@
             </button>
         </div>
 
+        <!-- Adicionar Goleiros -->
         <h4>Adicionar Goleiros</h4>
         <textarea id="goalkeeperNames" class="form-control mb-3" placeholder="Insira os nomes dos goleiros, um por linha"></textarea>
 
         <button class="btn btn-primary w-100 mb-4" id="sortGoalkeepersBtn" onclick="sortGoalkeepers()" style="display:none;">
             <i class="fas fa-futbol"></i> Sortear Goleiros
         </button>
-
 
         <!-- Container de Times -->
         <div id="teamsContainer" class="row row-cols-1 row-cols-md-2 g-3"></div>
@@ -155,10 +86,13 @@
 
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-    <script src="script.js"></script>
+    <!-- Bootstrap JS Local -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Font Awesome JS Local -->
+    <script src="assets/FontAwesome/js/all.min.js"></script>
+
+    <!-- Script Personalizado -->
+    <script src="script.js"></script>
 </body>
 </html>

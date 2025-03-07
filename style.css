@@ -1,88 +1,74 @@
-/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: #1e1e2f;
+    color: white;
+    padding: 20px;
 }
-
-header.hero {
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    padding: 4rem 0;
-    text-align: center;
+h1, h4 {
+    color: #f8f9fa;
 }
-
-header.hero h1 {
-    font-size: 3rem;
-    color: #fff;
+.team-card {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-
-header.hero p {
-    font-size: 1.2rem;
-    color: #64ffda;
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
-
-/* Section Titles */
-h2 {
-    font-size: 2rem;
-    color: #64ffda;
-    text-align: center;
-    margin-bottom: 2rem;
+.card-header {
+    font-weight: bold;
+    border-radius: 12px 12px 0 0;
+    color: white;
 }
-
-/* Timeline */
-.timeline {
-    position: relative;
-    padding: 2rem 0;
-    margin-top: 2rem;
+button {
+    transition: all 0.3s ease;
 }
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 4px;
-    background: #64ffda;
-    transform: translateX(-50%);
+button:hover {
+    transform: scale(1.1);
 }
-
-.timeline-item {
-    position: relative;
-    width: 50%;
-    padding: 1.5rem;
-    background: #1f1f1f;
+textarea, input[type="text"], input[type="number"], input[type="color"] {
+    background-color: white;
+    border: none;
+    color: black;
+}
+textarea::placeholder, input::placeholder {
+    color: #333;
+}
+.btn {
     border-radius: 8px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+}
+.modal-content {
+    background-color: #2e2e3e;
+    color: white;
+}
+.modal-header, .modal-body {
+    color: white;
+}
+.list-group-item {
+    background-color: #2e2e3e;
+    color: white;
+    border-color: #444;
+}
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.timeline-item:hover {
-    transform: translateY(-10px);
-}
-
-.timeline-item:nth-child(odd) {
-    left: 0;
-}
-
-.timeline-item:nth-child(even) {
-    left: 50%;
-}
-
-.timeline-content {
-    color: #e0e0e0;
-}
-
-.timeline-content h3 {
-    color: #64ffda;
-    margin-bottom: 0.5rem;
-}
-
-/* Footer */
-footer.footer {
-    padding: 2rem 0;
-    background: #1b1b1b;
-    color: #a0a0a0;
-    text-align: center;
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .team-card {
+        margin-bottom: 15px;
+    }
+    .btn, input, textarea {
+        font-size: 14px;
+    }
+    .card-header {
+        font-size: 16px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h4 {
+        font-size: 18px;
+    }
 }
