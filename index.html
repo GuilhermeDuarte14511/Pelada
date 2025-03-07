@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organizador de Pelada</title>
 
+    <!-- Manifesto do PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e1e2f">
+
     <!-- Bootstrap CSS Local -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -94,5 +98,20 @@
 
     <!-- Script Personalizado -->
     <script src="script.js"></script>
+
+    <!-- Registrar o Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar o Service Worker:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
