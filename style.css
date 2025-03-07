@@ -54,6 +54,16 @@ textarea::placeholder, input::placeholder {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Ajuste do container de toasts para telas menores */
+#toastContainer {
+    max-width: 90vw; /* Limita o tamanho do toast a 90% da largura da tela */
+    top: 10px; /* Dá um espaço superior para o toast */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o toast horizontalmente */
+    z-index: 1100;
+}
+
+
 /* Estilos Responsivos */
 @media (max-width: 768px) {
     .team-card {
@@ -70,5 +80,11 @@ textarea::placeholder, input::placeholder {
     }
     h4 {
         font-size: 18px;
+    }
+
+    #toastContainer {
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
