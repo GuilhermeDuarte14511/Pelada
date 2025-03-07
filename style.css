@@ -1,0 +1,88 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+header.hero {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+header.hero h1 {
+    font-size: 3rem;
+    color: #fff;
+}
+
+header.hero p {
+    font-size: 1.2rem;
+    color: #64ffda;
+}
+
+/* Section Titles */
+h2 {
+    font-size: 2rem;
+    color: #64ffda;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #64ffda;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1.5rem;
+    background: #1f1f1f;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-10px);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-content {
+    color: #e0e0e0;
+}
+
+.timeline-content h3 {
+    color: #64ffda;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer.footer {
+    padding: 2rem 0;
+    background: #1b1b1b;
+    color: #a0a0a0;
+    text-align: center;
+}
