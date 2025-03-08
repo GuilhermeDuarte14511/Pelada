@@ -229,7 +229,7 @@ function executeTransfer(newTeamIndex, newPlayerIndex) {
 }
 
 function sortGoalkeepers() {
-    const goalkeeperNames = document.getElementById('goalkeeperNames').value
+    let goalkeeperNames = document.getElementById('goalkeeperNames').value
         .split('\n')
         .map(name => name.trim())
         .filter(name => name);
@@ -239,17 +239,22 @@ function sortGoalkeepers() {
         return;
     }
 
-    if (goalkeeperNames.length < teams.length) {
-        showToast('Número insuficiente de goleiros para todos os times!', 'danger');
-        return;
+    // Se houver menos goleiros do que times, repete os goleiros até preencher todos os times
+    while (goalkeeperNames.length < teams.length) {
+        goalkeeperNames = goalkeeperNames.concat(goalkeeperNames);
     }
 
+    // Limita os goleiros ao número de times e embaralha
+    goalkeeperNames = goalkeeperNames.slice(0, teams.length);
     goalkeeperNames.sort(() => Math.random() - 0.5);
+
+    // Atribui os goleiros aos times
     teams.forEach((team, index) => {
         team.players = [`🧤 ${goalkeeperNames[index]}`, ...team.players.filter(p => !p.startsWith('🧤'))];
     });
 
     renderTeams();
-    showToast('Goleiros sorteados com sucesso!', 'success');
+    showToast('Goleiros sorteados (incluindo repetidos, se necessário) com sucesso!', 'success');
     document.getElementById('sortGoalkeepersBtn').style.display = 'none';
 }
+
