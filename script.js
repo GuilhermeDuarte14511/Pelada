@@ -135,6 +135,8 @@ function clearTeams() {
 
 
 
+let editablePlayer = null;
+
 function renderTeams() {
     const container = document.getElementById('teamsContainer');
     container.innerHTML = '';
@@ -154,10 +156,15 @@ function renderTeams() {
                         <ul class="list-group mb-3">
                             ${goalkeepers.map((player, playerIndex) => `
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span class="player-name">${player}</span>
-                                    <button class="btn btn-sm btn-info" onclick="openTransferModal(${teamIndex}, ${playerIndex})">
-                                        Transferir
-                                    </button>
+                                    ${renderPlayerName(player, teamIndex, playerIndex)}
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-info" onclick="openTransferModal(${teamIndex}, ${playerIndex})">
+                                            Transferir
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="enableEditing(${teamIndex}, ${playerIndex})">
+                                            Editar
+                                        </button>
+                                    </div>
                                 </li>`).join('')}
                         </ul>
 
@@ -165,10 +172,15 @@ function renderTeams() {
                         <ul class="list-group">
                             ${linePlayers.map((player, playerIndex) => `
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span class="player-name">${player}</span>
-                                    <button class="btn btn-sm btn-info" onclick="openTransferModal(${teamIndex}, ${playerIndex})">
-                                        Transferir
-                                    </button>
+                                    ${renderPlayerName(player, teamIndex, goalkeepers.length + playerIndex)}
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-info" onclick="openTransferModal(${teamIndex}, ${goalkeepers.length + playerIndex})">
+                                            Transferir
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="enableEditing(${teamIndex}, ${goalkeepers.length + playerIndex})">
+                                            Editar
+                                        </button>
+                                    </div>
                                 </li>`).join('')}
                         </ul>
                     </div>
@@ -176,6 +188,32 @@ function renderTeams() {
             </div>`;
     });
 }
+
+function renderPlayerName(player, teamIndex, playerIndex) {
+    if (editablePlayer?.teamIndex === teamIndex && editablePlayer?.playerIndex === playerIndex) {
+        return `<input type="text" class="form-control player-input" value="${player}" 
+                onblur="updatePlayerName(${teamIndex}, ${playerIndex}, this.value)" 
+                onkeydown="if(event.key === 'Enter') this.blur()" autofocus />`;
+    }
+    return `<span class="player-name">${player}</span>`;
+}
+
+function enableEditing(teamIndex, playerIndex) {
+    editablePlayer = { teamIndex, playerIndex };
+    renderTeams();
+}
+
+function updatePlayerName(teamIndex, playerIndex, newName) {
+    if (newName.trim()) {
+        teams[teamIndex].players[playerIndex] = newName.trim();
+        showToast('Nome do jogador atualizado com sucesso!', 'success');
+    } else {
+        showToast('Nome inválido! A edição foi cancelada.', 'warning');
+    }
+    editablePlayer = null;
+    renderTeams();
+}
+
 
 function openTransferModal(teamIndex, playerIndex) {
     playerToTransfer = { teamIndex, playerIndex };

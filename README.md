@@ -1,67 +1,59 @@
-# Guilherme Duarte - Desenvolvedor .NET
+# Organizador de Pelada
 
-Bem-vindo ao meu portfólio pessoal! Este projeto foi desenvolvido para demonstrar minhas habilidades em desenvolvimento web utilizando tecnologias como HTML, CSS e JavaScript, com foco especial em .NET e C#.
+Bem-vindo ao Organizador de Pelada! Este projeto foi desenvolvido para facilitar o sorteio de times e goleiros para peladas de futebol, proporcionando uma experiência prática e divertida para todos os participantes.
 
 ## 📖 Sobre o Projeto
 
-Este site é uma representação interativa do meu percurso profissional, habilidades e projetos nos quais tenho trabalhado. Com um design moderno e responsivo, ele oferece uma experiência de usuário agradável e informativa.
+O Organizador de Pelada permite adicionar times, jogadores e goleiros, sorteando-os de maneira randômica para formar as equipes de forma justa e dinâmica. O projeto possui uma interface intuitiva e responsiva, permitindo o uso tanto em desktops quanto em dispositivos móveis.
 
 ## 🚀 Funcionalidades
 
-- **Animação Personalizada na Jumbotron:** Uma animação de código C# rolando em segundo plano, destacando minha especialização em .NET.
-- **Seções Informativas:**
-  - **Sobre Mim:** Informações detalhadas sobre minha formação e experiência.
-  - **Habilidades:** Apresentação das minhas principais habilidades técnicas com ícones representativos.
-  - **Projetos:** Exibição de projetos com descrições, tecnologias utilizadas e barras de progresso animadas indicando o status de conclusão.
-  - **Contato:** Links diretos para minhas redes sociais e formas de contato.
-- **Animações Suaves:** Uso de bibliotecas como Animate.css para transições e animações que enriquecem a experiência do usuário.
-- **Design Responsivo:** Layout adaptável para diversos dispositivos, garantindo acessibilidade em smartphones, tablets e desktops.
+- **Adicionar Times:** Defina o nome, a cor do time e a quantidade de jogadores desejada.
+- **Adicionar Jogadores e Goleiros:** Insira os jogadores e goleiros em listas separadas, permitindo sorteios personalizados.
+- **Sorteio Automático:** Distribuição randômica de jogadores e goleiros nos times.
+- **Transferência de Jogadores:** Opção para mover jogadores entre os times facilmente.
+- **Toasts Informativos:** Feedback visual das ações realizadas no sistema.
+- **Modo Offline (PWA):** A aplicação funciona mesmo sem conexão com a internet.
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **HTML5**
 - **CSS3**
-  - Variáveis CSS para fácil manutenção e personalização.
-  - Flexbox e Grid para layout responsivo.
 - **JavaScript**
-  - Manipulação do DOM para animações e interatividade.
 - **Bootstrap 5**
-  - Sistema de grid e componentes pré-estilizados.
 - **Font Awesome**
-  - Ícones representativos para habilidades e tecnologias.
-- **Animate.css**
-  - Animações pré-definidas para elementos ao rolar a página.
-- **Google Fonts**
-  - Tipografia personalizada para melhor legibilidade.
+- **PWA (Progressive Web App)**
 
 ## 🎯 Objetivos do Projeto
 
-- **Demonstração de Habilidades:** Mostrar proficiência em desenvolvimento front-end e back-end.
-- **Interatividade:** Proporcionar uma experiência dinâmica e envolvente para o visitante.
-- **Atualização Constante:** Espaço para adicionar novos projetos e atualizações futuras.
+- **Facilitar o Sorteio de Times:** Permitir sorteios rápidos e justos para as peladas de futebol.
+- **Interatividade e Usabilidade:** Proporcionar uma interface amigável e responsiva.
+- **Acessibilidade Offline:** Uso de Service Workers para funcionamento como PWA.
 
 ## 📂 Estrutura do Projeto
 
-- **index.html:** Estrutura principal do site com todas as seções.
-- **style.css:** Estilos customizados, incluindo animações e responsividade.
-- **script.js:** Scripts para interatividade e animações ao rolar a página.
-- **Imagens e Recursos:** Inclui a imagem de perfil e quaisquer outros recursos visuais utilizados.
+- **index.html:** Página principal do projeto.
+- **style.css:** Estilos customizados do sistema.
+- **script.js:** Lógica do sorteio e interatividade.
+- **assets:** Contém bibliotecas locais, ícones e imagens.
+- **service-worker.js:** Gerencia o cache e o funcionamento offline.
+- **manifest.json:** Configuração do PWA.
 
 ## 🔧 Como Executar o Projeto
 
 1. **Clone ou Faça o Download:**
-   - Clone o repositório ou faça o download dos arquivos do projeto.
+   - Baixe o repositório ou faça o download dos arquivos do projeto.
 2. **Organize os Arquivos:**
-   - Certifique-se de que `index.html`, `style.css` e `script.js` estão no mesmo diretório.
+   - Certifique-se de que todos os arquivos estão na estrutura correta.
 3. **Abra no Navegador:**
-   - Abra o arquivo `index.html` em seu navegador preferido.
+   - Abra o arquivo `index.html` diretamente no navegador.
 
 ## 📞 Contato
 
-Estou aberto a oportunidades e colaborações! Sinta-se à vontade para entrar em contato comigo através dos seguintes meios:
+Estou à disposição para dúvidas, sugestões e colaborações!
 
 - **Email:** [guilhermeduarte14511@gmail.com](mailto:guilhermeduarte14511@gmail.com)
-- **LinkedIn:** [linkedin.com/in/guilherme-duarte-2253b0154](https://www.linkedin.com/in/guilherme-duarte-2253b0154/)
+- **LinkedIn:** [Guilherme Duarte](https://www.linkedin.com/in/guilherme-duarte-2253b0154/)
 - **WhatsApp:** [+55 11 96351-6246](https://api.whatsapp.com/send?phone=5511963516246)
 
 ## 📜 Licença
