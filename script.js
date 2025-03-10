@@ -296,3 +296,12 @@ function sortGoalkeepers() {
     document.getElementById('sortGoalkeepersBtn').style.display = 'none';
 }
 
+
+function updatePlayerCount() {
+    const playerNames = document.getElementById('playerNames').value
+        .split('\n')
+        .map(name => name.trim())
+        .filter(name => name);
+    const count = playerNames.length;
+    document.getElementById('playerCount').textContent = `${count} jogador(es) adicionado(s)`;
+}

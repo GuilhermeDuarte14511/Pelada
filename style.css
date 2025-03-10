@@ -6,6 +6,18 @@ body {
 h1, h4 {
     color: #f8f9fa;
 }
+
+/* Estilos para o textarea */
+#playerNames {
+    min-height: 150px; /* Aumenta o tamanho padrão */
+    resize: vertical; /* Permite o redimensionamento vertical */
+    
+}
+
+#playerCount{
+    color: white !important;
+}
+
 .team-card {
     margin-bottom: 20px;
     border-radius: 12px;
@@ -86,5 +98,11 @@ textarea::placeholder, input::placeholder {
         max-width: 90vw;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    #playerNames {
+        min-height: 250px; /* Maior altura no mobile */
+        color: white !important;
+
     }
 }
