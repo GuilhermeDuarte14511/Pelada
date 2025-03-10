@@ -75,6 +75,16 @@ textarea::placeholder, input::placeholder {
     z-index: 1100;
 }
 
+#playerList {
+    max-height: 200px; /* Define a altura máxima da lista */
+    overflow-y: auto;   /* Adiciona o scroll vertical */
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #2e2e3e; /* Mantém o estilo escuro */
+}
+
+
+
 
 /* Estilos Responsivos */
 @media (max-width: 768px) {
@@ -102,6 +112,15 @@ textarea::placeholder, input::placeholder {
 
     #playerNames {
         min-height: 250px; /* Maior altura no mobile */
-        color:black !important;
+        color: black !important;
+    }
+
+    /* Adicionando scroll vertical à lista de jogadores no mobile */
+    #playerList {
+        max-height: 200px; /* Ajusta a altura máxima no mobile */
+        overflow-y: auto;   /* Ativa o scroll vertical */
+        border: 1px solid #444;
+        border-radius: 8px;
+        background-color: #2e2e3e;
     }
 }

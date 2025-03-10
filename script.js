@@ -303,5 +303,12 @@ function updatePlayerCount() {
         .map(name => name.trim())
         .filter(name => name);
     const count = playerNames.length;
+    
     document.getElementById('playerCount').textContent = `${count} jogador(es) adicionado(s)`;
+
+    const playerList = document.getElementById('playerList');
+    playerList.innerHTML = '';
+    playerNames.forEach((name, index) => {
+        playerList.innerHTML += `<li class="list-group-item">${index + 1} - ${name}</li>`;
+    });
 }

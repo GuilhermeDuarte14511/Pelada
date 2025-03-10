@@ -45,12 +45,12 @@
         </div>
 
        <!-- Adicionar Jogadores -->
-            <div class="mb-4">
-                <h4>Adicionar Jogadores</h4>
+        <div class="mb-4 row">
+            <h4>Adicionar Jogadores</h4>
+            <div class="col-md-8">
                 <textarea id="playerNames" class="form-control mb-2" 
                         placeholder="Insira os nomes dos jogadores, um por linha" 
                         oninput="updatePlayerCount()"></textarea>
-                <small id="playerCount" class="text-white">0 jogadores adicionados</small>
                 
                 <button class="btn btn-success w-100 mb-2" onclick="distributePlayers()">
                     <i class="fas fa-random"></i> Sortear Jogadores
@@ -59,6 +59,13 @@
                     <i class="fas fa-redo"></i> Novo Sorteio
                 </button>
             </div>
+            <div class="col-md-4">
+                <h6 class="text-white">Jogadores Adicionados:</h6>
+                <small id="playerCount" class="text-white">0 jogadores adicionados</small>
+                <ul id="playerList" class="list-group mt-2"></ul>
+            </div>
+        </div>
+
 
 
         <!-- Adicionar Goleiros -->
