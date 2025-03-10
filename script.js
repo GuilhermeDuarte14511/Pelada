@@ -216,3 +216,19 @@ function updatePlayerCount() {
         playerList.appendChild(listItem);
     });
 }
+
+function executeTransfer(newTeamIndex, newPlayerIndex) {
+    if (!playerToTransfer) return;
+
+    const { teamIndex, playerIndex } = playerToTransfer;
+    const oldTeam = teams[teamIndex];
+    const newTeam = teams[newTeamIndex];
+
+    [oldTeam.players[playerIndex], newTeam.players[newPlayerIndex]] = 
+    [newTeam.players[newPlayerIndex], oldTeam.players[playerIndex]];
+
+    playerToTransfer = null;
+    renderTeams();
+    bootstrap.Modal.getInstance(document.getElementById('transferModal')).hide();
+    showToast('Jogadores trocados com sucesso!', 'success');
+}
