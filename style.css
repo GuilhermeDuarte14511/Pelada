@@ -9,19 +9,31 @@ h1, h4 {
 
 /* Estilos para o textarea */
 #playerNames {
-    min-height: 150px; /* Aumenta o tamanho padrão */
-    resize: vertical; /* Permite o redimensionamento vertical */
-    
+    min-height: 150px; 
+    resize: vertical; 
 }
 
-#playerCount{
+#playerCount {
     color: white !important;
+}
+
+/* Animação de entrada suave para os cards dos times */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .team-card {
     margin-bottom: 20px;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.5s ease-in-out;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .team-card:hover {
@@ -33,12 +45,34 @@ h1, h4 {
     border-radius: 12px 12px 0 0;
     color: white;
 }
+
+/* Animação nos Botões */
 button {
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 button:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.75s;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
 textarea, input[type="text"], input[type="number"], input[type="color"] {
     background-color: white;
     border: none;
@@ -66,6 +100,17 @@ textarea::placeholder, input::placeholder {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Toasts Animados */
+.toast {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-20px);
+}
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Ajuste do container de toasts para telas menores */
 #toastContainer {
     max-width: 90vw; /* Limita o tamanho do toast a 90% da largura da tela */
@@ -75,16 +120,26 @@ textarea::placeholder, input::placeholder {
     z-index: 1100;
 }
 
+/* Scroll na lista de jogadores */
 #playerList {
-    max-height: 200px; /* Define a altura máxima da lista */
-    overflow-y: auto;   /* Adiciona o scroll vertical */
+    max-height: 200px;
+    overflow-y: auto;
     border: 1px solid #444;
     border-radius: 8px;
-    background-color: #2e2e3e; /* Mantém o estilo escuro */
+    background-color: #2e2e3e;
+    transition: all 0.3s ease;
 }
 
+#playerList li {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
 
-
+#playerList li.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* Estilos Responsivos */
 @media (max-width: 768px) {
@@ -111,14 +166,14 @@ textarea::placeholder, input::placeholder {
     }
 
     #playerNames {
-        min-height: 250px; /* Maior altura no mobile */
+        min-height: 250px;
         color: black !important;
     }
 
-    /* Adicionando scroll vertical à lista de jogadores no mobile */
+    /* Scroll vertical na lista de jogadores no mobile */
     #playerList {
-        max-height: 200px; /* Ajusta a altura máxima no mobile */
-        overflow-y: auto;   /* Ativa o scroll vertical */
+        max-height: 200px;
+        overflow-y: auto;
         border: 1px solid #444;
         border-radius: 8px;
         background-color: #2e2e3e;

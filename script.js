@@ -149,14 +149,14 @@ function renderTeams() {
             <div class="col-md-4">
                 <div class="card team-card" style="border-color: ${team.color}; background-color: ${team.color};">
                     <div class="card-header" style="color: white;">
-                        ${team.name} (${team.players.length}/${team.size})
+                        Time ${teamIndex + 1}: ${team.name} (${linePlayers.length}/${team.size})
                     </div>
                     <div class="card-body">
                         <h6 class="text-white">GOL:</h6>
                         <ul class="list-group mb-3">
                             ${goalkeepers.map((player, playerIndex) => `
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    ${renderPlayerName(player, teamIndex, playerIndex)}
+                                    <span>${1} - ${renderPlayerName(player, teamIndex, playerIndex)}</span>
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-info" onclick="openTransferModal(${teamIndex}, ${playerIndex})">
                                             Transferir
@@ -172,7 +172,7 @@ function renderTeams() {
                         <ul class="list-group">
                             ${linePlayers.map((player, playerIndex) => `
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    ${renderPlayerName(player, teamIndex, goalkeepers.length + playerIndex)}
+                                    <span>${playerIndex + 1} - ${renderPlayerName(player, teamIndex, goalkeepers.length + playerIndex)}</span>
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-info" onclick="openTransferModal(${teamIndex}, ${goalkeepers.length + playerIndex})">
                                             Transferir
@@ -188,6 +188,7 @@ function renderTeams() {
             </div>`;
     });
 }
+
 
 function renderPlayerName(player, teamIndex, playerIndex) {
     if (editablePlayer?.teamIndex === teamIndex && editablePlayer?.playerIndex === playerIndex) {
@@ -302,13 +303,17 @@ function updatePlayerCount() {
         .split('\n')
         .map(name => name.trim())
         .filter(name => name);
+
     const count = playerNames.length;
-    
     document.getElementById('playerCount').textContent = `${count} jogador(es) adicionado(s)`;
 
     const playerList = document.getElementById('playerList');
-    playerList.innerHTML = '';
+    playerList.innerHTML = ''; // Limpa a lista antes de adicionar os jogadores
+
     playerNames.forEach((name, index) => {
-        playerList.innerHTML += `<li class="list-group-item">${index + 1} - ${name}</li>`;
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item show';
+        listItem.innerHTML = `<span>${index + 1} - ${name}</span>`;
+        playerList.appendChild(listItem);
     });
 }

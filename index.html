@@ -18,13 +18,19 @@
 
     <!-- Estilos Personalizados -->
     <link href="style.css" rel="stylesheet">
+
+    <!-- Biblioteca Animate.css para animações -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Biblioteca AOS para animações ao rolar a página -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
     <div class="container">
-        <h1 class="mb-4 text-center">Organizador de Pelada</h1>
+        <h1 class="mb-4 text-center animate__animated animate__fadeInDown">Organizador de Pelada</h1>
         
         <!-- Adicionar Times -->
-        <div class="mb-4">
+        <div class="mb-4" data-aos="fade-up">
             <h4>Adicionar Times</h4>
             <div class="row mb-2">
                 <div class="col-12 col-md-4 mb-2 mb-md-0">
@@ -45,7 +51,7 @@
         </div>
 
        <!-- Adicionar Jogadores -->
-        <div class="mb-4 row">
+        <div class="mb-4 row" data-aos="fade-up" data-aos-delay="100">
             <h4>Adicionar Jogadores</h4>
             <div class="col-md-8">
                 <textarea id="playerNames" class="form-control mb-2" 
@@ -66,10 +72,8 @@
             </div>
         </div>
 
-
-
         <!-- Adicionar Goleiros -->
-        <h4>Adicionar Goleiros</h4>
+        <h4 data-aos="fade-up" data-aos-delay="200">Adicionar Goleiros</h4>
         <textarea id="goalkeeperNames" class="form-control mb-3" placeholder="Insira os nomes dos goleiros, um por linha"></textarea>
 
         <button class="btn btn-primary w-100 mb-4" id="sortGoalkeepersBtn" onclick="sortGoalkeepers()" style="display:none;">
@@ -77,10 +81,10 @@
         </button>
 
         <!-- Container de Times -->
-        <div id="teamsContainer" class="row row-cols-1 row-cols-md-2 g-3"></div>
+        <div id="teamsContainer" class="row row-cols-1 row-cols-md-2 g-3" data-aos="fade-up" data-aos-delay="300"></div>
 
         <!-- Modal para Transferência de Jogadores -->
-        <div class="modal fade" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel" aria-hidden="true">
+        <div class="modal fade animate__animated animate__zoomIn" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -115,6 +119,16 @@
     <!-- Script Personalizado -->
     <script src="script.js"></script>
 
+    <!-- Biblioteca AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // Duração da animação em ms
+            easing: 'ease-in-out',
+            once: true // Anima apenas na primeira vez
+        });
+    </script>
+
     <!-- Registrar o Service Worker -->
     <script>
         if ('serviceWorker' in navigator) {
@@ -131,4 +145,3 @@
     </script>
 </body>
 </html>
-
