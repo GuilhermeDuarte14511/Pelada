@@ -4,84 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organizador de Pelada</title>
-    
-    <!-- Ícone e Manifesto do PWA -->
     <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#1e1e2f">
-
-    <!-- Bootstrap CSS Local -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome CSS Local -->
     <link href="assets/FontAwesome/css/all.min.css" rel="stylesheet">
-
-    <!-- Estilos Personalizados -->
     <link href="style.css" rel="stylesheet">
-
-    <!-- Biblioteca Animate.css para animações -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-    <!-- Biblioteca AOS para animações ao rolar a página -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
     <div class="container">
         <h1 class="mb-4 text-center animate__animated animate__fadeInDown">Organizador de Pelada</h1>
-        
-        <!-- Adicionar Times -->
+
+        <!-- Configuração dos Times -->
         <div class="mb-4" data-aos="fade-up">
-            <h4>Adicionar Times</h4>
-            <div class="row mb-2">
-                <div class="col-12 col-md-4 mb-2 mb-md-0">
-                    <input type="text" id="teamName" class="form-control" placeholder="Nome do Time">
+            <h4>Configurar Times</h4>
+            <div class="row mb-2 align-items-end">
+                <div class="col-8 col-md-6 mb-2 mb-md-0">
+                    <input type="number" id="playersPerTeam" class="form-control" placeholder="Jogadores por Time" min="1">
                 </div>
-                <div class="col-6 col-md-3 mb-2 mb-md-0">
-                    <input type="number" id="teamSize" class="form-control" placeholder="Quantidade de Jogadores">
-                </div>
-                <div class="col-6 col-md-3 mb-2 mb-md-0">
-                    <input type="color" id="teamColor" class="form-control" value="#000000">
-                </div>
-                <div class="col-12 col-md-2">
-                    <button class="btn btn-primary w-100" onclick="addTeam()">
-                        <i class="fas fa-plus"></i> Adicionar Time
+                <div class="col-4 col-md-3">
+                    <button class="btn btn-primary w-100" onclick="generateTeams()">
+                        <i class="fas fa-cogs"></i> Gerar Times
                     </button>
                 </div>
             </div>
         </div>
 
-       <!-- Adicionar Jogadores -->
-        <div class="mb-4 row" data-aos="fade-up" data-aos-delay="100">
+        <!-- Adicionar Jogadores -->
+        <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
             <h4>Adicionar Jogadores</h4>
-            <div class="col-md-8">
-                <textarea id="playerNames" class="form-control mb-2" 
-                        placeholder="Insira os nomes dos jogadores, um por linha" 
-                        oninput="updatePlayerCount()"></textarea>
-                
-                <button class="btn btn-success w-100 mb-2" onclick="distributePlayers()">
-                    <i class="fas fa-random"></i> Sortear Jogadores
-                </button>
-                <button class="btn btn-warning w-100 mb-4" onclick="clearTeams()">
-                    <i class="fas fa-redo"></i> Novo Sorteio
-                </button>
-            </div>
-            <div class="col-md-4">
-                <h6 class="text-white">Jogadores Adicionados:</h6>
-                <small id="playerCount" class="text-white">0 jogadores adicionados</small>
-                <ul id="playerList" class="list-group mt-2"></ul>
-            </div>
+            <textarea id="playerNames" class="form-control mb-2" 
+                    placeholder="Insira os nomes dos jogadores, um por linha" 
+                    oninput="updatePlayerCount()"></textarea>
+            
+            <h6 class="text-white">Jogadores Adicionados:</h6>
+            <small id="playerCount" class="text-white">0 jogadores adicionados</small>
+            <ul id="playerList" class="list-group mt-2"></ul>
         </div>
 
-        <!-- Adicionar Goleiros -->
-        <h4 data-aos="fade-up" data-aos-delay="200">Adicionar Goleiros</h4>
-        <textarea id="goalkeeperNames" class="form-control mb-3" placeholder="Insira os nomes dos goleiros, um por linha"></textarea>
+        <!-- Configuração do Goleiro -->
+        <h4 data-aos="fade-up" data-aos-delay="200">Configuração do Goleiro</h4>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="hasFixedGoalkeeper" onchange="toggleGoalkeeperInput()">
+            <label class="form-check-label" for="hasFixedGoalkeeper">Tem Goleiro Fixo?</label>
+        </div>
+
+        <textarea id="goalkeeperNames" class="form-control mb-3" placeholder="Insira os nomes dos goleiros, um por linha" disabled></textarea>
 
         <button class="btn btn-primary w-100 mb-4" id="sortGoalkeepersBtn" onclick="sortGoalkeepers()" style="display:none;">
             <i class="fas fa-futbol"></i> Sortear Goleiros
         </button>
 
         <!-- Container de Times -->
-        <div id="teamsContainer" class="row row-cols-1 row-cols-md-2 g-3" data-aos="fade-up" data-aos-delay="300"></div>
+        <div id="teamsContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3" data-aos="fade-up" data-aos-delay="300"></div>
 
         <!-- Modal para Transferência de Jogadores -->
         <div class="modal fade animate__animated animate__zoomIn" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel" aria-hidden="true">
@@ -104,44 +79,20 @@
 
         <!-- Toast Container -->
         <div id="toastContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 1100;"></div>
-
     </div>
 
-    <!-- jQuery Local - Deve vir antes do Bootstrap JS -->
+    <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
-
-    <!-- Bootstrap JS Local -->
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Font Awesome JS Local -->
     <script src="assets/FontAwesome/js/all.min.js"></script>
-
-    <!-- Script Personalizado -->
     <script src="script.js"></script>
-
-    <!-- Biblioteca AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
-            duration: 800, // Duração da animação em ms
+            duration: 800,
             easing: 'ease-in-out',
-            once: true // Anima apenas na primeira vez
+            once: true
         });
-    </script>
-
-    <!-- Registrar o Service Worker -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registrado com sucesso:', registration);
-                    })
-                    .catch(error => {
-                        console.log('Falha ao registrar o Service Worker:', error);
-                    });
-            });
-        }
     </script>
 </body>
 </html>
