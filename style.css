@@ -102,6 +102,6 @@ textarea::placeholder, input::placeholder {
 
     #playerNames {
         min-height: 250px; /* Maior altura no mobile */
-
+        color:black !important;
     }
 }
